@@ -15,16 +15,16 @@ with source as (
         */
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_salesforce__item_tmp')),
-                staging_columns=get_item_columns()
+                source_columns=adapter.get_columns_in_relation(ref('stg_salesforce__product_tmp')),
+                staging_columns=get_product_columns()
             )
         }}
 
       --The below script allows for pass through columns.
 
-        {% if var('item_pass_through_columns') %}
+        {% if var('product_pass_through_columns') %}
         ,
-        {{ var('item_pass_through_columns') | join (", ")}}
+        {{ var('product_pass_through_columns') | join (", ")}}
 
         {% endif %}
 
@@ -33,22 +33,28 @@ with source as (
 ), renamed as (
 
     select
-        id as item_id,
+        id as product_id,
         _fivetran_synced,
-        order_id,
         created_date,
         created_by_id,
         last_modified_date,
         last_modified_by_id,
-        is_deleted,
-        pricebook_entry_id,
-        product_2_id,
-        quantity
+        product_code,
+        name,
+        description,
+        is_active,
+        family,
+        net_suite_product_id_c,
+        shipping_sku_c,
+        sellable_sku_c,
+        net_suite_on_hand_c,
+        warehouse_on_hand_c,
+        is_deleted
       --The below script allows for pass through columns.
 
-        {% if var('item_pass_through_columns') %}
+        {% if var('product_pass_through_columns') %}
         ,
-        {{ var('item_pass_through_columns') | join (", ")}}
+        {{ var('product_pass_through_columns') | join (", ")}}
 
         {% endif %}
 

@@ -560,20 +560,33 @@ models:
       description: The unique, system-generated ID assigned during creation.
       tests:
         - not_null
+        - unique
     - name: _fivetran_synced
       description: The time at which fivetran last synced this record
     - name: created_by_id
       description: Users who created the order.
+      tests:
+        - not_null
     - name: created_date
       description: Date when the order was created.
+      tests:
+        - not_null
     - name: last_modified_by_id
       description: Users who last modified the order.
+      tests:
+        - not_null
     - name: last_modified_date
       description: Date when the order was last modified.
+      tests:
+        - not_null
     - name: product_code
       description: Nauto part number.
+      tests:
+        - not_null
     - name: name
       description: The human-readable name of the product.
+      tests:
+        - not_null
     - name: description
       description: Text description of the product.
     - name: is_active

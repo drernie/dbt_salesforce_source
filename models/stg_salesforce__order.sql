@@ -69,8 +69,22 @@ with source as (
         branch_id_c,
         bill_to_contact_id,
         billing_city,
-        is_deleted,
-        type
+        billing_country,
+        billing_country_code,
+        billing_postal_code,
+        billing_state,
+        billing_state_code,
+        billing_street,
+        ship_to_contact_id,
+        shipping_city,
+        shipping_country,
+        shipping_country_code,
+        shipping_postal_code,
+        shipping_state,
+        shipping_state_code,
+        shipping_street,
+        type,
+        is_deleted
 
       --The below script allows for pass through columns.
 

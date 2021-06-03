@@ -409,8 +409,6 @@ models:
       description: Date when the order shipped
     - name: class_c
       description: NetSuite class for classifying orders, e.g "Fleets"
-    - name: name
-      description: Required. Name of the account.
     - name: description
       description: Text description of the order.
     - name: memo_c

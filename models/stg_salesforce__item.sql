@@ -66,12 +66,8 @@ with source as (
 ), calculated as (
 
     select
-        *
-        {% if (subscription_months_c > 0) %}
-        ,
-        quantity / subscription_months_c as subscription_units_c
-
-        {% endif %}
+        *,
+        case when subscription_months_c > 0 then quantity / subscription_months_c else 0 end as subscription_units_c
     from renamed
 
 )

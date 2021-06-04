@@ -51,8 +51,7 @@ with source as (
         total_price,
         total_price_custom_c,
         serial_numbers_c,
-        subscription_months_c,
-        subscription_units_c
+        subscription_months_c
 
       --The below script allows for pass through columns.
 
@@ -68,6 +67,11 @@ with source as (
 
     select
         *
+        {% if (subscription_months_c > 0) %}
+        ,
+        quantity / subscription_months_c as subscription_units_c
+
+        {% endif %}
     from renamed
 
 )

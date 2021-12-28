@@ -3,6 +3,7 @@ config-version: 2
 name: 'salesforce_source'
 version: '0.4.0'
 profile: default
+
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
@@ -10,17 +11,8 @@ models:
     tmp:
       materialized: view
     materialized: table
-  file_format: delta
-
-seeds:
-  file_format: delta
-
-snapshots:
-  file_format: delta
 
 vars:
-  salesforce_schema: salesforce
-  salesforce_database: ''
   salesforce_source:
     account: "{{ source('salesforce', 'account') }}"
     opportunity: "{{ source('salesforce', 'opportunity') }}"
@@ -37,12 +29,3 @@ vars:
     using_opportunity_history_mode_active_records: false
     using_user_role_history_mode_active_records: false
     using_user_history_mode_active_records: false
-
-    # My additional variables
-
-    order: "{{ source('salesforce', 'order') }}"
-    item: "{{ source('salesforce', 'order_item') }}"
-    product: "{{ source('salesforce', 'product_2') }}"
-    order_pass_through_columns: []
-    item_pass_through_columns: []
-    product_pass_through_columns: []
